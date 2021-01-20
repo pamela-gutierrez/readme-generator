@@ -1,14 +1,14 @@
 // TODO: Include packages needed for this application
-
-// TODO: Create an array of questions for user input
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
+// TODO: Create an array of questions for user input
+
 
 const writeFileAsyn = util.promisify(fs.writeFile);
 
 // TODO: Create a function to write README file
-const writeToFile = (fileName, data) =>
+const promptUser = () =>
     inquirer.prompt([
         {
             type: "input",
@@ -27,7 +27,12 @@ const writeToFile = (fileName, data) =>
         },
         {
             type: 'input',
-            name: 'name',
+            name: 'technologies',
+            messgage: "What technologies did you use?",
+        },
+        {
+            type: 'input',
+            name: 'projectName',
             messgage: "What is your project's name?",
         },
         {
@@ -36,8 +41,9 @@ const writeToFile = (fileName, data) =>
             messgage: 'Please write a short description of your project',
         },
         {
-            type: 'input',
-            name: 'checkbox',
+            type: 'checkbox',
+            choices: ['MIT', 'Apache', 'Mozilla Public License'],
+            name: 'license',
             messgage: 'What kind of license should your project have?',
         },
         {
@@ -52,41 +58,62 @@ const writeToFile = (fileName, data) =>
         },
         {
             type: 'input',
-            name: 'tests',
-            messgage: 'What commands should be run to run tests?',
-        },
-        {
-            type: 'input',
-            name: 'user requirements',
-            messgage: 'What does the user need to know about using the repo?',
-        },
-        {
-            type: 'input',
-            name: 'contributer requirements',
-            messgage: 'What does the user need to know about contributing to the repo?',
-        },
+            name: 'usage',
+            messgage: 'What are your usage instructions for the app?',
+        }
     ]);
 
-.then((data) => {
-        const newMarkdown = 'generateReadme.md';
-        writeFileAsync(newMarkdown, `
-    #${data.name}
-    ##${data.description}
-    ## Table of Contents
-|                                     |                                         |                                         |
-| :---------------------------------- | :-------------------------------------- | :-------------------------------------- |
-| [Project Description](#Unwind)      | [Table of Contents](#table-of-contents) | [Goals and Methods](#goals-and-methods) |
-| [Deployed Link](#deployed-link)     | [Authors](#authors) ${data.name}        |[License](#license) 
----
+const generateReadme = (data) =>
+    `# ${data.projectName}
+
+    # Description 
+    ${data.description}
     
-    `)
-    }
+    # Table of Contents
+
+    [Description](#Description)  
+
+    [Table of Contents](#Table-of-Contents)  
+
+    [Usage](#usage)  
+
+    [Technologies Used](#technologies-used)  
+
+    [Deployed Link](#deployed-link)  
+
+    [Authors](#authors)  
+
+    [License](#license)  
+
+
+    # Usage
+    ${data.usage}
+    
+    # Technologies Used
+    ${data.technologies}
+    
+    # Authors
+    ${data.name}
+    [GitHub]${data.username}
+    ${data.email}
+    
+    # License
+    ${data.license}
+    `;
+
+
+promptUser()
+    .then((data) => writeFileAsyn('generateReadme.md', generateReadme(data)))
+    .then(() => console.log("Success!"))
+    .catch((err) => console.error(err));
 
 
 
 
-// TODO: Create a function to initialize app
-function init() { }
+        // // TODO: Create a function to initialize app
+        // function init() { }
 
-// Function call to initialize app
-init();
+
+
+        // // Function call to initialize app
+        // init();
