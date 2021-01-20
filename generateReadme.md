@@ -1,36 +1,34 @@
-# sdfksdf
-
-    # Description 
-    dkfhasdf
+# Readme Generator
+# Description 
+dfjadf
     
-    # Table of Contents
+# Table of Contents
 
-    [Description](#Description)  
+[Description](#Description)  
 
-    [Table of Contents](#Table-of-Contents)  
+[Table of Contents](#Table-of-Contents)  
 
-    [Usage](#usage)  
+[Usage](#usage)  
 
-    [Technologies Used](#technologies-used)  
+[Technologies Used](#technologies-used)  
 
-    [Deployed Link](#deployed-link)  
+[Deployed Link](#deployed-link)  
 
-    [Authors](#authors)  
+[Authors](#authors)  
 
-    [License](#license)  
+[License](#license)  
 
 
-    # Usage
-    dskfja
+# Usage
+fdakjlf'
     
-    # Technologies Used
-    sdfkhsadf
+# Technologies Used
+Node, JS, Git
     
-    # Authors
-    dskfhadf
-    [GitHub]dksfj
-    sdkfhsdaf
+# Authors
+Pamela Gutierrez
+[GitHub]pamela-gutierrez
+gtrz.pamela@gmail.com
     
-    # License
-    kdfasd
-    
+# License
+- ![License](https://img.shields.io/badge/license--blue.svg)
